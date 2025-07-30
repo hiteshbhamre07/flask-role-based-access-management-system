@@ -23,7 +23,7 @@ This is a Flask web application that demonstrates **Role-Based Access Control (R
 - Flask-Login
 - Flask-WTF
 - SQLAlchemy
-- SQLite (or your DB of choice)
+- MYSQL (or your DB of choice)
 
 ---
 
