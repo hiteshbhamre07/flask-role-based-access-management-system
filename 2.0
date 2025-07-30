@@ -1,0 +1,2 @@
+Requirement already satisfied: Werkzeug in c:\users\admin\desktop\flask_test_prject\.venv\lib\site-packages (3.0.1)
+Requirement already satisfied: MarkupSafe>=2.1.1 in c:\users\admin\desktop\flask_test_prject\.venv\lib\site-packages (from Werkzeug) (2.1.4)

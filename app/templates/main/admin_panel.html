@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h5>{% block title %}Manage Folder Permissions{% endblock %}</h5>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Role</th>
+                <th>Folder Path</th>
+                <th>Actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for role in roles %}
+            <tr>
+                <td>{{ role.name }}</td>
+                <td>
+                    {% for permission in role.folder_permissions %}
+                        {{ permission.folder_path }}<br>
+                    {% endfor %}
+                </td>
+                <td>
+                    <form method="post" action="{{ url_for('main.assign_folder_permissions', role_id=role.id) }}">
+                        <input type="text" name="folder_path" placeholder="Enter folder path">
+                        <button type="submit">Assign Folder Permission</button>
+                    </form>
+                </td>
+               
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

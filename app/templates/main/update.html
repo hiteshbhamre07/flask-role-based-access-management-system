@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include "security/_messages.html" %}
+    <div class="card">
+        <div class="card-header">
+            <h5>{% block title %} Users {% endblock %}</h5>
+        </div>
+        <div class="card-body">
+            {% if current_user.is_authenticated %}
+                <form method="POST" action="{{ url_for('main.update_user', user_id=user.id) }}" class="row g-3 needs-validation" novalidate>
+                    
+                    <div class="form-group">
+                        <label for="username" class="form-label">Username:</label>
+                        <input class="form-control" type="text" name="username" value="{{ user.username }}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email:</label>
+                        <input class="form-control" type="email" name="email" value="{{ user.email }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role" class="form-label">Role:</label>
+                        <select class="form-control" name="role" required>
+                            <option value="" disabled hidden>Select a Role</option>
+                            {% for role in roles %}
+                                <option value="{{ role.id }}" {% if role in user.role %} selected {% endif %}>{{ role.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="invalid-feedback">This field is required</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password:</label>
+                        <input class="form-control" type="password" name="password" required>
+                    </div>
+
+                    <div>
+                        <input class="btn btn-primary" type="submit" value="Update">
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include "security/_messages.html" %}
+    <div class="card">
+        <div class="card-header">
+            <h5>{% block title %} Users {% endblock %}</h5>
+        </div>
+        <div class="card-body">
+            {% if current_user.is_authenticated %}
+                <form method="post" action="{{ url_for('main.delete_user', user_id=user.id) }}">
+                    
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-primary" type="submit">Delete</button>
+                </form>
+                <a href="{{ url_for('main.users') }}"><button class="btn btn-primary">Cancel</button></a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+<!--<a title="Delete" class="btn btn-danger btn-sm" href="{{ url_for('main.delete_user', user_id=user[0]) }}" onclick="return confirm('Are you sure you want to delete this item')" style="display: inline;">
+    <i type="submit" class="bi bi-trash3"></i>
+    
+</a>-->
+
+

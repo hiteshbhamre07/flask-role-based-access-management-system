@@ -1,0 +1,94 @@
+{% block doc -%}
+<!DOCTYPE html>
+<html{% block html_attribs %}{% endblock html_attribs %}>
+  {%- block html %}
+  <head>
+    {%- block head %}
+    <title>{% block title %}{{ title|default }}{% endblock title %}</title>
+
+      <!-- {%- block metas %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      {%- endblock metas %} -->
+
+      <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      {%- block head_scripts %}
+      {%- endblock head_scripts %}
+
+      <!--{%- block styles %}
+        <style>
+          .fs-center { text-align: center }
+          .fs-important { font-size: larger; font-weight: bold }
+          .fs-gap { margin-top: 20px; }
+          .fs-div { margin: 4px; }
+          .fs-error-msg { color: darkred; }
+        </style>
+      {%- endblock styles %} -->
+
+      <link rel="shortcut icon" href="{{ url_for('static', filename='icons/cpu-fill.svg') }}" type="image/svg">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='icons/bootstrap-icons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/custom_style.css') }}" rel="stylesheet">
+
+    {%- endblock head %}
+  </head>
+  <body{% block body_attribs %}{% endblock body_attribs %} class="bg-primary-subtle mb-50">
+    <div class="position-absolute top-50 start-50 translate-middle ">
+      <div class="card shadow-sm">
+        <div class="card-header text-center">
+          <h5><span class="text text-primary">LEADQ</span> <i class="bi bi-cpu-fill"></i> <span class="text text-danger">PREDICTOR</span></h5>
+        </div>
+        <div class="card-body">
+          {% block body -%}
+            {% block navbar %}
+            {%- endblock navbar %}
+            {% block content -%}
+            {%- endblock content %}
+
+            {% block scripts %}
+            {%- endblock scripts %}
+          {%- endblock body %}
+        </div>
+      </div>
+    </div>
+    <footer class="footer fixed-bottom">
+      <div class="container-fluid bg-dark py-3">
+          <p class="text-center text-white m-0">&copy; 2023 | Roverpath</p>
+      </div>
+  </footer>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom_js.js') }}"></script>
+    
+  </body>
+  {%- endblock html %}
+</html>
+{% endblock doc -%}
+
+
+
+
+
+<!-- <script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+'use strict'
+
+// Fetch all the forms we want to apply custom Bootstrap validation styles to
+const forms = document.querySelectorAll('.needs-validation')
+
+// Loop over them and prevent submission
+Array.from(forms).forEach(form => {
+form.addEventListener('submit', event => {
+  if (!form.checkValidity()) {
+    event.preventDefault()
+    event.stopPropagation()
+  }
+
+  form.classList.add('was-validated')
+}, false)
+})
+})()
+</script> -->

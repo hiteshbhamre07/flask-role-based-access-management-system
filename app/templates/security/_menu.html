@@ -1,0 +1,58 @@
+{% if security.registerable or security.recoverable or security.confirmable or security.unified_signin or security.two_factor or security.webauthn %}
+  <hr>
+  <h6 class="text-center">{{ _fsdomain('Not Sure?') }}</h6>
+  <div class="col-md-12">
+    {% if current_user and current_user.is_authenticated %}
+      {# already authenticated user #}
+      <p>
+        <a class="btn btn-primary btn-sm" href="{{ url_for_security('logout') }}">{{ _fsdomain("Sign out") }}</a>
+      <!-- </p> -->
+      {% if security.changeable %}
+        <!-- <p> -->
+          &nbsp;<a class="btn btn-primary btn-sm" href="{{ url_for_security('change_password') }}">{{ _fsdomain("Change Password") }}
+          <!-- </p> -->
+      {% endif %}
+      {% if security.two_factor %}
+        <!-- <p> -->
+          &nbsp;<a class="btn btn-primary btn-sm" href="{{ url_for_security('two_factor_setup') }}">{{ _fsdomain("Two Factor Setup") }}
+          <!-- </p> -->
+      {% endif %}
+      {% if security.unified_signin %}
+        <!-- <p> -->
+          &nbsp;<a class="btn btn-primary btn-sm" href="{{ url_for_security('us_setup') }}">{{ _fsdomain("Unified Signin Setup") }}
+          <!-- </p> -->
+      {% endif %}
+      {% if security.webauthn %}
+        <!-- <p> -->
+          &nbsp;<a class="btn btn-primary btn-sm" href="{{ url_for_security('wan_register') }}">{{ _fsdomain("WebAuthn Setup") }}
+          <!-- </p> -->
+      {% endif %}
+    {% else %}
+      {% if not skip_login_menu %}
+        <!-- <p> -->
+          &nbsp; <a class="btn btn-primary btn-sm" href="{{ url_for_security('login') }}{%- if 'next' in request.args -%}?next={{ request.args.next|urlencode }}{%- endif -%}">{{ _fsdomain('Login') }}</a>
+        <!-- </p> -->
+      {% endif %}
+      {% if security.unified_signin and not skip_login_menu %}
+        <!-- <p> -->
+          &nbsp;<a class="btn btn-primary btn-sm" href="{{ url_for_security('us_signin') }}{%- if 'next' in request.args -%}?next={{ request.args.next|urlencode }}{%- endif -%}">{{ _fsdomain('Unified Sign In') }}</a>
+        <!-- </p> -->
+      {% endif %}
+      {% if security.registerable %}
+        <!-- <p> -->
+          &nbsp;<a class="btn btn-primary btn-sm" href="{{ url_for_security('register') }}{%- if 'next' in request.args -%}?next={{ request.args.next|urlencode }}{%- endif -%}">{{ _fsdomain('Register') }}</a>
+        <!-- </p> -->
+      {% endif %}
+      {% if security.recoverable %}
+        <!-- <p> -->
+          &nbsp;<a class="btn btn-primary btn-sm" href="{{ url_for_security('forgot_password') }}">{{ _fsdomain('Forgot password') }}</a>
+        <!-- </p> -->
+      {% endif %}
+      {% if security.confirmable %}
+        <!-- <p> -->
+          &nbsp;<a class="btn btn-primary btn-sm" href="{{ url_for_security('send_confirmation') }}">{{ _fsdomain('Confirm account') }}</a>
+        </p>
+      {% endif %}
+    {% endif %}
+      </div>
+{% endif %}

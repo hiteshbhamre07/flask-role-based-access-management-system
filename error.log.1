@@ -1,0 +1,116 @@
+Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask\app.py", line 868, in full_dispatch_request
+    rv = self.preprocess_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask\app.py", line 1243, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_principal.py", line 477, in _on_before_request
+    identity = loader()
+               ^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_security\core.py", line 696, in _identity_loader
+    if not isinstance(current_user._get_current_object(), AnonymousUserMixin):
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\werkzeug\local.py", line 515, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_security\core.py", line 638, in _user_loader
+    user = _security.datastore.find_user(fs_uniquifier=str(user_id))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_security\datastore.py", line 778, in find_user
+    query = self.user_model.query
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_sqlalchemy\model.py", line 30, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in _set_entities
+    coercions.expect(
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\sql\coercions.py", line 406, in expect
+    insp._post_inspect
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1260, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2707, in _post_inspect
+    self._check_configure()
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2386, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4199, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4236, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[RolesUsers(roles_users)]'. Original exception was: reverse_property 'roles' on relationship RolesUsers.user references relationship User.roles, which does not reference mapper Mapper[RolesUsers(roles_users)]
+Exception on /favicon.ico [GET]
+Traceback (most recent call last):
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask\app.py", line 868, in full_dispatch_request
+    rv = self.preprocess_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask\app.py", line 1243, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_principal.py", line 477, in _on_before_request
+    identity = loader()
+               ^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_security\core.py", line 696, in _identity_loader
+    if not isinstance(current_user._get_current_object(), AnonymousUserMixin):
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\werkzeug\local.py", line 515, in _get_current_object
+    return get_name(local())
+                    ^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_login\utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_login\utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_login\login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_security\core.py", line 638, in _user_loader
+    user = _security.datastore.find_user(fs_uniquifier=str(user_id))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_security\datastore.py", line 778, in find_user
+    query = self.user_model.query
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\flask_sqlalchemy\model.py", line 30, in __get__
+    return cls.query_class(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 276, in __init__
+    self._set_entities(entities)
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 289, in _set_entities
+    coercions.expect(
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\sql\coercions.py", line 406, in expect
+    insp._post_inspect
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 1260, in __get__
+    obj.__dict__[self.__name__] = result = self.fget(obj)
+                                           ^^^^^^^^^^^^^^
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2707, in _post_inspect
+    self._check_configure()
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 2386, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4199, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "C:\Users\ADMIN\Desktop\flask_test_prject\.venv\Lib\site-packages\sqlalchemy\orm\mapper.py", line 4236, in _do_configure_registries
+    raise e
+sqlalchemy.exc.InvalidRequestError: One or more mappers failed to initialize - can't proceed with initialization of other mappers. Triggering mapper: 'Mapper[RolesUsers(roles_users)]'. Original exception was: reverse_property 'roles' on relationship RolesUsers.user references relationship User.roles, which does not reference mapper Mapper[RolesUsers(roles_users)]

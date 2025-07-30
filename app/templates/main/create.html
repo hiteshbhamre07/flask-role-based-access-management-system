@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h5>{% block title %} Users {% endblock %}</h5>
+        </div>
+        <div class="card-body">
+            {% if current_user.is_authenticated %}
+                    <form method="POST" action="{{ url_for('main.create') }}" class="row g-3 needs-validation" novalidate>
+                    <div class="form-group">
+                        <label for="username" class="form-label">Username:</label>
+                        <input class = "form-control" type="text" name="username" required>
+                        <div class ="invalid-feedback">This Field is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email:</label>
+                        <input class = "form-control" type="email" name="email" required>
+                        <div class ="invalid-feedback">This Field is required</div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="role" class="form-label">Role:</label>
+                        <input class = "form-control" type="text" name="role" required>
+                        <div class ="invalid-feedback">This Field is required</div>
+                    </div> -->
+                    <div class="form-group">
+                        <label for="role" class="form-label">Role:</label>
+                        <select class="form-control" name="role" required>
+                            <option value="" selected disabled hidden>Select a Role</option>
+                            {% for role in roles %}
+                                <option value="{{ role.id }}">{{ role.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="invalid-feedback">This Field is required</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password:</label>
+                        <input class = "form-control" type="password" name="password" required>
+                        <div class ="invalid-feedback">This Field is required</div>
+                    </div>
+                    <div>
+                        <input class="btn btn-primary" type="submit" value="Create_user">
+                    </div>
+                    </form> 
+            {% endif %}
+        </div>
+    </div>
+   
+    
+{% endblock %}
+

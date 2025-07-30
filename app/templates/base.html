@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icons/cpu-fill.svg') }}" type="image/svg">
+    <title>LEADQPREDICTOR - {% block title %} {% endblock %}</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='icons/bootstrap-icons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='DataTables/datatables.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/custom_style.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-primary-subtle shadow-sm">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="{{ url_for('main.index') }}"><span class="text text-primary">LEADQ</span> <i class="bi bi-cpu-fill"></i> <span class="text text-danger">PREDICTOR</span></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                {% if current_user.is_authenticated %}
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ url_for('main.index') }}">Dashboard</a>
+                  </li>
+                  
+                  <!--<li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>-->
+                  <li class="nav-item">
+                    <div class="dropdown">
+                      <button class="btn btn-link nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Link
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="{{ url_for('main.users') }}">Users</a>
+                        <a class="dropdown-item" href="{{ url_for('main.roles') }}">Roles</a>
+                        <a class="dropdown-item" href="{{ url_for('main.role_permissions') }}">User Roles</a>
+                        <a class="dropdown-item" href="{{ url_for('main.permissions') }}">Permissions</a>
+                        <a class="dropdown-item" href="{{ url_for('main.admin_panel') }}">Assign Folder Permissions</a>
+                        
+                      </div>
+                    </div>
+                    
+                  </li>
+                </ul>
+                {% endif %}
+                <div class="d-flex">
+                  {% if current_user.is_authenticated %}
+                  Hi {{ current_user.email }}!&nbsp;<a href="{{ url_for('security.logout') }}" class="btn btn-danger btn-sm"><i class="bi bi-box-arrow-in-right"></i> Logout</a>
+                  {% else %}
+                  <a href="{{ url_for('security.register') }}" class="btn btn-dark btn-sm"><i class="bi bi-person"></i> Register</a>&nbsp;
+                  <a href="{{ url_for('security.login') }}" class="btn btn-primary btn-sm"><i class="bi bi-shield-lock-fill"></i> Login</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <main>
+        <div class="container-fluid py-3">
+            {% block content %} {% endblock %}
+        </div>
+    </main>
+    <footer class="footer fixed-bottom">
+      <div class="container-fluid bg-dark py-1">
+          <p class="text-center text-white m-0">&copy; 2024 | Roverpath</p>
+      </div>
+  </footer>
+    </footer>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='DataTables/datatables.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/custom_js.js') }}"></script>
+  </body>
+</html>
+
+
